@@ -5,33 +5,40 @@ export default function App() {
     const [output, setOutput] = useState('EasyDoseIt')
     return (
         <View style={
-            styles.container
+            styles.screen
         }>
             <View style={
-                {
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                }
+              styles.inputContainer
             }>
                 <TextInput placeholder="strain name"
                     style={
-                        {
-                            width: '80%',
-                            borderBottomColor: "black",
-                            borderBottomWidth: 1,
-                            paddingBottom: 10
-                        }
+                        styles.strainInput
                     }/>
-                <Button color={styles.button.color} title="add"/>
+                <Button color={
+                        styles.button.color
+                    }
+                    title="add"/>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    screen: {
         padding: 50
+    },
+    strainInput: {
+
+        width: '80%',
+        borderBottomColor: "black",
+        borderBottomWidth: 1,
+        paddingBottom: 10
+
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     button: {
         color: '#017C6B'
