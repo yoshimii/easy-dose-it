@@ -1,38 +1,26 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
-
+import {StyleSheet, View, FlatList} from 'react-native';
+import StrainInput from './components/StrainInput.js';
+import Strain from './components/Strain.js';
 export default function App() {
-    const [strain, setStrain] = useState('')
-    const [strains, setStrains] = useState([])
     
-    const handleStrain = enteredStrain => {
-      setStrain(enteredStrain)
-    }
+    const [strains, setStrains] = useState([])
 
-    const addStrainHandler = e => {
-      setStrains(currentStrains => [...currentStrains, strain])
+    const addStrainHandler = strainName => {
+      setStrains(currentStrains => [
+        ...currentStrains,
+         { key: Date.now().toString(), value: strainName }
+        ])
     }
     return (
         <View style={
             styles.screen
         }>
-            <View style={
-              styles.inputContainer
-            }>
-                <TextInput placeholder="strain name" onChangeText={handleStrain} value={strain}
-                    style={
-                        styles.strainInput
-                    }/>
-                <Button color={
-                        styles.button.color
-                    }
-                    title="add"
-                    onPress={addStrainHandler}
-                    />
-            </View>
-            <View>
-                  {strains.map(s => <Text>{s}</Text>)}
-            </View>
+          <StrainInput onAddStrain={addStrainHandler} />
+          <FlatList data={strains}
+          renderItem={sData => (
+          <Strain name={sData.item.value} />
+        )} style={{ marginVertical: 10}}/>                  
         </View>
     );
 }
@@ -41,20 +29,5 @@ const styles = StyleSheet.create({
     screen: {
         padding: 50
     },
-    strainInput: {
 
-        width: '80%',
-        borderBottomColor: "black",
-        borderBottomWidth: 1,
-        paddingBottom: 10
-
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    button: {
-        color: '#017C6B'
-    }
 });
