@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
 const Strain = props => {
-    return <View style={styles.strainName}>
-    <Text>{props.name}</Text>
-  </View>
-}
+    return (
+    <TouchableNativeFeedback onLongPress={props.delete.bind(this, props.id)}>
+      <View style={styles.strainName}>
+        <Text>{props.name}</Text>
+      </View>
+  </TouchableNativeFeedback>
+  );
+};
 
 const styles = StyleSheet.create({
     strainName: {
