@@ -23,13 +23,16 @@ const StrainInput = props => {
                 style={
                     styles.strainInput
                 }/>
-            <Button title='cancel' color="red" onPress={props.onCancel} />
-            <Button color={
-                    styles.button.color
-                }
-                title="add"
-                onPress={addStrainHandler}
-                />
+            <View style={styles.buttonsContainer}>
+            <View style={styles.button} >
+                <Button title='cancel' color="red" onPress={props.onCancel} />
+            </View>
+            <View style={styles.button} >
+            <Button title="add" color="#017C6B" onPress={addStrainHandler} />
+            </View>
+            
+
+            </View>
         </View>
     </Modal>
       </>
@@ -51,8 +54,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '60%'
+    },
     button: {
-        color: '#017C6B'
+        width: '40%'
     },
 })
 
