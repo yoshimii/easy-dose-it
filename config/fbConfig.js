@@ -11,12 +11,14 @@ const firebaseConfig = {
   projectId: "easydoseit-98199",
   storageBucket: "easydoseit-98199.appspot.com",
   messagingSenderId: "622044171543",
-  appId: "1:622044171543:android:cd4f11864b9a4668aefb52"
+  appId: "1:622044171543:android:cd4f11864b9a4668aefb52",
+  measurementId: "G-0WCRSLL0EM"  
 }
 
 //Initialize Firebase
 
 firebase.initializeApp(firebaseConfig)
+firebase.analytics();
 export const firestore = firebase.firestore()
 export const auth = firebase.auth()
 export const storage = firebase.storage()
